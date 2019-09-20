@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.primary-blue{
+    background-color: #0C61F2;
+    color: white !important;
+}
+
+.green-dot{
+    height: 10px;
+    width: 10px;
+    background-color: #286d28;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.float-right{
+  float: right;
+}
+
+.float-left{
+  float: left;
+}
+
+simple-snack-bar span {
+  margin:auto;
+  text-align: center;
+}
+
+.pointer{
+  cursor: pointer;
+}

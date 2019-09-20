@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng serve --watch",
+    "build": "ng build && npm run copy",
+    "prod-build": "ng build --prod && npm run copy",
+    "copy": "cp -R dist ../chat-app-backend",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
