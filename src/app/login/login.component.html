@@ -1,0 +1,67 @@
+<div class="container">
+  <h5 class="card-title text-center">Comment-o-hollic</h5>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signin">
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="name">Name :</label>
+      <input type="text" formControlName="name" id="name" class="form-control" placeholder="Name">
+      <div *ngIf="loginForm.controls.name.invalid && loginForm.controls.name.touched">Name is
+        required
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="username">Username :</label>
+      <input type="text" formControlName="username" id="username" class="form-control" placeholder="Username">
+      <div *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">Username is
+        required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail">Email:</label>
+      <input type="email" formControlName="email" id="inputEmail" class="form-control" placeholder="Email address"
+        autofocus>
+      <div
+        *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.dirty">
+        Email is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword">Password:</label>
+      <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password">
+      <div *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">Password is
+        required
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="inputCPassword">Confirm Password:</label>
+      <input type="password" formControlName="confirmPassword" id="inputCPassword" class="form-control"
+        placeholder="Confirm Password">
+      <div *ngIf="loginForm.controls.confirmPassword.invalid && loginForm.controls.confirmPassword.touched">Confirm
+        Password is
+        required
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <button mat-button class="w-50 primary-blue" [disabled]="loginForm.invalid" type="submit">
+        {{buttonText}}
+      </button>
+
+    </div>
+
+    <!-- <button mat-button color="primary">Primary</button> -->
+    <div class="row justify-content-center">
+
+      <button *ngIf="isLogin" mat-button color="accent" class="my-3 w-50 pointer" type="button"
+        (click)="redirectTo('sign-up')">
+        Don't have an account? Sign Up</button>
+
+      <button *ngIf="!isLogin" mat-button color="accent" class="my-3 w-50" type="button"
+        (click)="redirectTo('login')">Already have an account? Sign In</button>
+    </div>
+    <hr class="my-4">
+  </form>
+</div>
