@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from '../shared/services/data.service';
+import { AlertService } from '../shared/services/alert.service';
 
 @Component({
   selector: 'app-comment',
@@ -17,7 +18,8 @@ export class CommentComponent implements OnInit {
   createComment$: Subscription;
   editComment$: Subscription;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,
+    private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -32,10 +34,23 @@ export class CommentComponent implements OnInit {
   onEditHandler(response) {
     if (response['isCreated']) {
       console.log("SUBMIT TO SERVER ");
+      const payload = {
+        text: response['text'],
+        commentId: this.currentComment.commentId
+      }
+      this.editComment$ = this.dataService.editComment(payload).subscribe(res => {
+        if (res['success']) {
+          this.currentComment.text = response['text'];
+        } else {
+          this.alertService.showAlert("Edit Failed")
+        }
+      }, err => {
+        console.error(err);
+        this.alertService.showAlert("Edit Failed")
+      })
     }
-    else {
-      console.log("IGNORE!")
-    }
+    this.currentComment = null;
+
     this.isEdit = false;
   }
 
@@ -58,15 +73,16 @@ export class CommentComponent implements OnInit {
         console.log(res);
         if (res['success']) {
           this.currentComment.replies.push(res['data'])
+        } else {
+          this.alertService.showAlert("Couldn't create new comment")
         }
 
         this.currentComment = null;
+      }, err => {
+        this.alertService.showAlert("Couldn't create new comment")
       })
     }
-    else {
-      console.log("IGNORE!")
-      this.currentComment = null;
-    }
+    this.currentComment = null;
     this.isReply = false;
 
   }
