@@ -22,14 +22,20 @@ export class CreateCommentComponent implements OnInit {
       isCreated: true,
       text: this.text
     };
-    this.submitResponse.emit(response);
+    this.onSubmit(response);
   }
 
   cancelComment() {
     const response = {
       isCreated: false,
     };
+    this.onSubmit(response);
+  }
+
+  onSubmit(response) {
+    this.text = '';
     this.submitResponse.emit(response);
+
   }
 
 }
