@@ -1,0 +1,35 @@
+<!-- <div *ngIf="comment.length"> -->
+
+<div *ngFor="let comment of comments">
+  <div [style.padding-left]="comment.level * 4 + 'rem'">
+    <div *ngIf="!isEdit || currentComment?.commentId !== comment?.commentId" class="comment">
+      <div>
+        {{comment.text}}
+      </div>
+      <div class="comment-actions">
+        <button *ngIf="comment.userId === userId" (click)="editComment(comment)" mat-button color="accent"
+          class="mx-2 w-50" type="button">
+          Edit
+        </button>
+        <button mat-button color="accent" (click)="replyToComment(comment)" class=" w-50" type="button">
+          Reply
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="isEdit && currentComment?.commentId === comment?.commentId">
+      <app-create-comment [text]=" comment.text" (submit)="onEditHandler($event)">
+      </app-create-comment>
+    </div>
+
+
+  </div>
+
+  <div *ngIf="isReply && currentComment?.commentId === comment?.commentId"
+    [style.padding-left]="(comment.level + 1 )* 4 + 'rem'">
+    <app-create-comment (submit)="onReplyHandler($event)"></app-create-comment>
+  </div>
+
+  <app-comment [comment]="comment.replies" *ngIf="comment.replies.length" [userId]="userId"></app-comment>
+</div>
+<!-- </div> -->

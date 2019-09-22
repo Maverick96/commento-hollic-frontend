@@ -1,0 +1,10 @@
+.comment{
+    display: flex;
+    flex-direction: column;
+    background-color: gainsboro; 
+    align-items: flex-start;
+}
+
+.comment-actions{
+    display: flex
+}
