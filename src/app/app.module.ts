@@ -13,6 +13,7 @@ import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommentComponent } from './comment/comment.component';
 import { CreateCommentComponent } from './create-comment/create-comment.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CreateCommentComponent } from './create-comment/create-comment.componen
     MatListModule,
     MatIconModule,
     MatSnackBarModule,
+    BrowserAnimationsModule,
     MatProgressSpinnerModule
   ],
   providers: [{

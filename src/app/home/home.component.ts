@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../shared/services/alert.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+    private alertService: AlertService) { }
   fetchComments$: Subscription;
   createComment$: Subscription;
   comments = [];
