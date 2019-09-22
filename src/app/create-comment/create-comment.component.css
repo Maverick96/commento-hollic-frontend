@@ -1,0 +1,7 @@
+.create-box{
+    display: flex;
+}
+
+textarea{
+    flex: 1;
+}
