@@ -1,10 +1,18 @@
 .comment{
     display: flex;
     flex-direction: column;
-    background-color: gainsboro; 
+    border: 1px solid burlywood;
     align-items: flex-start;
+    font-family: fantasy;
 }
 
 .comment-actions{
-    display: flex
+    display: flex;
+    font-family: fantasy;
+}
+.user-name{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family: fantasy;
 }

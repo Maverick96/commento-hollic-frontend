@@ -5,4 +5,5 @@
 textarea{
     flex: 1;
     resize: none;
+    font-family: fantasy;
 }

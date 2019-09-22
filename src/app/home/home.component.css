@@ -1,11 +1,17 @@
 .create-comment{
-    padding: 10px;
-    border: 1px solid;
+    
     height: 10vh;
 }
 
-.list-comment{
+.list-comments{
     max-height: 90vh;
+    height: 90vh;;
     overflow: auto;
-    
+}
+
+
+.list-comments, .create-comment{
+    background: linear-gradient(90deg, rgb(190, 230, 236), rgb(99, 195, 241));
+    padding: 10px;
+    border: 1px solid;
 }

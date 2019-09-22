@@ -1,9 +1,20 @@
 <!-- <div *ngIf="comment.length"> -->
 
-<div *ngFor="let comment of comments">
-  <div [style.padding-left]="comment.level * 4 + 'rem'">
+<div class="mb-2 mt-1" *ngFor="let comment of comments">
+  <div class="mb-2" [style.padding-left]="(comment.level -1 ) * 2 + 'rem'">
+    <div class="user-name">
+      <span>
+        {{comment.name}}
+      </span>
+
+      <span>
+        {{comment.createdAt | date : 'medium'}}
+
+      </span>
+    </div>
+
     <div *ngIf="!isEdit || currentComment?.commentId !== comment?.commentId" class="comment">
-      <div>
+      <div class="p-1">
         {{comment.text}}
       </div>
       <div class="comment-actions">
@@ -25,8 +36,8 @@
 
   </div>
 
-  <div *ngIf="isReply && currentComment?.commentId === comment?.commentId"
-    [style.padding-left]="(comment.level + 1 )* 4 + 'rem'">
+  <div class="mb-2" *ngIf="isReply && currentComment?.commentId === comment?.commentId"
+    [style.padding-left]="(comment.level )* 2 + 'rem'">
     <app-create-comment (submit)="onReplyHandler($event)"></app-create-comment>
   </div>
 

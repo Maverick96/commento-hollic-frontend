@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, ViewChild, ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,12 +9,15 @@ import { EventEmitter } from '@angular/core';
 export class CreateCommentComponent implements OnInit {
   @Input('text') message;
   @Output('submit') submitResponse = new EventEmitter<object>();
+  @ViewChild('textArea') textArea: ElementRef;
   constructor() { }
   text: string = ''
   ngOnInit() {
     if (this.message) {
       this.text = this.message
     }
+
+    this.textArea.nativeElement.focus();
   }
 
   postComment() {
