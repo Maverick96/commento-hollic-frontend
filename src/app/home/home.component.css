@@ -1,0 +1,11 @@
+.create-comment{
+    padding: 10px;
+    border: 1px solid;
+    height: 10vh;
+}
+
+.list-comment{
+    max-height: 90vh;
+    overflow: auto;
+    
+}

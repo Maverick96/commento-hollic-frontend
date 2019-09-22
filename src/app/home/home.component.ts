@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
   fetchComments$: Subscription;
+  createComment$: Subscription;
   comments = [];
   userId: number;
   ngOnInit() {
@@ -30,6 +31,25 @@ export class HomeComponent implements OnInit {
     }, err => {
 
     })
+  }
+
+  onCreateHandler(response) {
+    if (response['isCreated']) {
+      const payload = {
+        text: response['text'],
+        level: 1,
+        path: '',
+        parentId: 0,
+        userId: this.userId
+      }
+      this.createComment$ = this.dataService.addComment(payload).subscribe(res => {
+        console.log(res);
+        if (res['success']) {
+          this.comments.push(res['data'])
+        }
+
+      })
+    }
   }
 
 }

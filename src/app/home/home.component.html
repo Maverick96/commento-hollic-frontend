@@ -1,5 +1,6 @@
-<!-- <div *ngFor="let comment of comments"> -->
-<app-comment *ngIf="comments.length" [comment]="comments" [userId]="userId"></app-comment>
-<!-- </div> -->
-
-{{userId}}
+<div class="create-comment">
+  <app-create-comment (submit)="onCreateHandler($event)"></app-create-comment>
+</div>
+<div class="list-comments">
+  <app-comment *ngIf="comments.length" [comment]="comments" [userId]="userId"></app-comment>
+</div>
