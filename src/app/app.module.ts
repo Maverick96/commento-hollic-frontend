@@ -11,13 +11,17 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentComponent } from './comment/comment.component';
+import { CreateCommentComponent } from './create-comment/create-comment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoaderComponent,
-    HomeComponent
+    HomeComponent,
+    CommentComponent,
+    CreateCommentComponent
   ],
   imports: [
     BrowserModule,

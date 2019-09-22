@@ -1,3 +1,5 @@
-<p>
-  home works!
-</p>
+<!-- <div *ngFor="let comment of comments"> -->
+<app-comment *ngIf="comments.length" [comment]="comments" [userId]="userId"></app-comment>
+<!-- </div> -->
+
+{{userId}}
